@@ -6,9 +6,6 @@
 # Compiled class file
 *.class
 
-# Log file
-*.log
-
 # BlueJ files
 *.ctxt
 
@@ -127,3 +124,9 @@ bin/
 
 # Simulation GUI and other tools window save file
 *-window.json
+
+### Logs and Temporary Files ###
+
+*.dat
+*.hoot
+*.log
