@@ -107,6 +107,30 @@ tasks.withType(JavaCompile) {
     options.compilerArgs.add "-XDstringConcat=inline"
 }
 
+task installGitHook(type: Copy){
+    from new File(rootProject.rootDir, 'scripts/pre-commit')
+    into { new File(rootProject.rootDir, '.git/hooks')}
+    filePermissions {
+        user {
+            read = true
+            write = true
+            execute = true
+        }
+        group {
+            read = true
+            write = true
+            execute = true
+        }
+        other {
+            read = true
+            write = false
+            execute = true
+        }
+    }
+}
+
+build.dependsOn "spotlessApply", "installGitHook"
+
 spotless {
     java {
         target fileTree(".") {
